@@ -17,9 +17,10 @@ python -m pip install -r requirements.txt
 | `01_hessian_by_hand.py` | Build a Hessian with SymPy and confirm the two mixed partials match |
 | `02_classify_flat_spots.py` | Find every critical point of x³ − 3x + y³ − 3y and classify it with the determinant test |
 | `03_eigen_verdict.py` | Classify any Hessian from the signs of its eigenvalues |
-| `04_coin_standard_error.py` | Curvature of a coin-flip log-likelihood gives the textbook standard error |
+| `04_poll_margin.py` | The bend of a poll's log-likelihood gives the standard error and the "plus or minus 3 points" margin |
 | `05_logistic_standard_errors.py` | Logistic regression standard errors by hand, and what a duplicated column does |
-| `06_newton.py` | Newton's method on the Rosenbrock valley (6 steps) |
+| `06a_newton_sqrt.py` | Newton's method as the old square-root rule: average the guess with S divided by the guess |
+| `06b_newton_rosenbrock.py` | Newton's method with a full Hessian on the Rosenbrock valley (6 steps) |
 | `07_numeric_hessian.py` | A finite-difference Hessian checked against the exact one |
 | `08_conditioning.py` | Condition number of the Longley regression Hessian, raw vs standardised |
 
@@ -36,13 +37,13 @@ and 4 − 1 = 3 with f_xx = 2 > 0 (minimum). Check with `03_eigen_verdict.py`:
 eigenvalues (−1, 5) and (1, 3).
 </details>
 
-**2.** In `04_coin_standard_error.py`, change the data to 60 heads in 100 flips. What happens
-to the standard error, and why?
+**2.** In `04_poll_margin.py`, change the poll to 100 people with 52 saying yes. What happens to
+the margin, and why?
 
 <details><summary>Answer</summary>
 
-It becomes about 0.049, roughly 3.16 times bigger than 0.0155. The curvature is ten times
-smaller, and the standard error is one over its square root, so it grows by √10.
+It becomes about ±9.8 points instead of ±3.1, roughly 3.16 times bigger. The bend is ten times
+smaller, and the margin is one over its square root, so it grows by √10.
 </details>
 
 **3.** In `05_logistic_standard_errors.py`, replace the duplicated column with
@@ -56,7 +57,7 @@ ridge has a little curvature.
 Near-duplicates are the quiet version of the same problem.
 </details>
 
-**4.** Start `06_newton.py` from (0.8, 0.3) on f(x, y) = x² − y² + y⁴/4 instead. Where does it end?
+**4.** Adapt `06b_newton_rosenbrock.py` to start from (0.8, 0.3) on f(x, y) = x² − y² + y⁴/4 instead. Where does it end?
 
 <details><summary>Answer</summary>
 
